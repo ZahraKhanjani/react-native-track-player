@@ -1,5 +1,4 @@
 package com.guichaguri.trackplayer.service.metadata;
-import android.util.Log;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -114,7 +113,6 @@ public class MetadataManager {
 
             // If there is no notification capabilities defined, we'll show all capabilities available
             if(notification == null) notification = capabilities;
-            Log.d(Utils.LOG, "It is updating the options");
             // Initialize all actions based on the options
 
             previousAction = createAction(notification, PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS, "Previous",
@@ -282,7 +280,6 @@ public class MetadataManager {
         pb.setBufferedPosition(playback.getBufferedPosition());
 
         session.setPlaybackState(pb.build());
-        Log.d(Utils.LOG, "The shit is happening here");
         updateNotification();
     }
 
@@ -300,7 +297,6 @@ public class MetadataManager {
     }
 
     private void updateNotification() {
-        Log.d(Utils.LOG, "updateNotification is called -> MetadataManager.java:302");
         if(session.isActive()) {
             service.startForeground(1, builder.build());
         } else {
